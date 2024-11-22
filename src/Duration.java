@@ -2,6 +2,7 @@ public class Duration implements Comparable<Duration> {
     private int hours;
     private int minutes;
     private int seconds;
+
     public Duration(int hours, int minutes, int seconds) {
         this.hours = hours;
         this.minutes = minutes;
@@ -15,7 +16,7 @@ public class Duration implements Comparable<Duration> {
     }
 
     public String toString() {
-
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
 
