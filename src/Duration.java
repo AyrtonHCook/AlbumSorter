@@ -11,6 +11,7 @@ public class Duration implements Comparable<Duration> {
     public int toSeconds(){
         return(hours * 3600 + minutes * 60 + seconds);
     }
+    
     public int compareTo(Duration other) {
         return (Integer.compare(this.toSeconds(), other.toSeconds()));
     }
