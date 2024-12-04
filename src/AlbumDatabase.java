@@ -1,4 +1,4 @@
-﻿import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -11,9 +11,8 @@ public class AlbumDatabase {
             Album currentAlbum = null;
 
             while ((line = br.readLine()) != null) {
-
-                if (line.contains(" : ")) { //only album lines contain "space":"space"
-                    String[] parts = line.split(":"); // assigns the parts of the album line from bufferreader to the correct objects
+                if (line.contains(" : ")) { // Only album lines contain " : "
+                    String[] parts = line.split(":");
                     String artist = parts[0].trim();
                     String[] albumParts = parts[1].split("\\(");
                     String albumTitle = albumParts[0].trim();
@@ -21,8 +20,8 @@ public class AlbumDatabase {
                     currentAlbum = new Album(artist, albumTitle, year);
                     collection.addAlbum(currentAlbum);
 
-                } else if (line.startsWith("0:")) { //track lines always start with 0: could have been else but whatever
-                    String[] parts = line.split(" - "); // assigns the part of the track line to correct object
+                } else if (line.startsWith("0:")) { // Track lines always start with "0:"
+                    String[] parts = line.split(" - ");
                     String[] durationParts = parts[0].split(":");
                     int minutes = Integer.parseInt(durationParts[1]);
                     int seconds = Integer.parseInt(durationParts[2]);
@@ -35,7 +34,7 @@ public class AlbumDatabase {
             }
 
             System.out.println("Unsorted collection of albums\n" + collection);
-            System.out.println("Kraftwarks total duration " + collection.getTotalDuration("Kraftwerk"));
+            System.out.println("Kraftwerk's total duration: " + collection.getTotalDuration("Kraftwerk"));
             collection.sortAlbums();
             System.out.println("\nAlbums sorted by artist and release year:\n" + collection);
             System.out.println("\nShortest Album name: " + collection.getShortestAlbumName().getAlbumName());
