@@ -13,18 +13,17 @@ public class Main {
 
             while ((line = br.readLine()) != null) {
 
-                if (line.contains(" : ")) {
-                    String[] parts = line.split(":");
+                if (line.contains(" : ")) { //only album lines contain "space":"space"
+                    String[] parts = line.split(":"); // assigns the parts of the album line from bufferreader to the correct objects
                     String artist = parts[0].trim();
                     String[] albumParts = parts[1].split("\\(");
-
                     String albumTitle = albumParts[0].trim();
                     int year = Integer.parseInt(albumParts[1].replace(")", "").trim());
                     currentAlbum = new Album(artist, albumTitle, year);
                     collection.addAlbum(currentAlbum);
 
-                } else if (line.startsWith("0:")) {
-                    String[] parts = line.split(" - ");
+                } else if (line.startsWith("0:")) { //track lines always start with 0: could have been else but whatever
+                    String[] parts = line.split(" - "); // assigns the part of the track line to correct object
                     String[] durationParts = parts[0].split(":");
                     int minutes = Integer.parseInt(durationParts[1]);
                     int seconds = Integer.parseInt(durationParts[2]);
