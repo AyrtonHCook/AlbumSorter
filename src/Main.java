@@ -12,16 +12,17 @@ public class Main {
             Album currentAlbum = null;
 
             while ((line = br.readLine()) != null) {
+
                 if (line.contains(" : ")) {
                     String[] parts = line.split(":");
-                    //System.out.println(parts[1]);
                     String artist = parts[0].trim();
                     String[] albumParts = parts[1].split("\\(");
-                    //System.out.println(albumParts[1]);
+
                     String albumTitle = albumParts[0].trim();
                     int year = Integer.parseInt(albumParts[1].replace(")", "").trim());
                     currentAlbum = new Album(artist, albumTitle, year);
                     collection.addAlbum(currentAlbum);
+
                 } else if (line.startsWith("0:")) {
                     String[] parts = line.split(" - ");
                     String[] durationParts = parts[0].split(":");
@@ -37,6 +38,7 @@ public class Main {
 
             System.out.println("Albums sorted by artist and release year:");
             System.out.println(collection);
+            System.out.println("Kraftwarks total duration " + collection.getTotalDuration("Kraftwerk"));
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
