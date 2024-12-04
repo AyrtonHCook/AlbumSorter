@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         AlbumCollection collection = new AlbumCollection();
         System.out.println("Working Directory: " + System.getProperty("user.dir"));
-        try (BufferedReader br = new BufferedReader(new FileReader("src/albums.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("albums.txt"))) {
             String line;
             Album currentAlbum = null;
 
@@ -36,9 +36,12 @@ public class Main {
                 }
             }
 
-            System.out.println("Albums sorted by artist and release year:");
-            System.out.println(collection);
+            System.out.println("Unsorted collection of albums\n" + collection);
             System.out.println("Kraftwarks total duration " + collection.getTotalDuration("Kraftwerk"));
+            collection.sortAlbums();
+            System.out.println("\nAlbums sorted by artist and release year:\n" + collection);
+            System.out.println("\nShortest Album name: " + collection.getShortestAlbumName().getAlbumName());
+            System.out.println("\nLongest Track in collection: " + collection.getLongestTrack());
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());

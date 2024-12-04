@@ -31,7 +31,7 @@ public class Album {
     }
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(albumName).append(" by ").append(artistName).append(" ").append(releaseYear).append("\n");
+        result.append(albumName).append(" by ").append(artistName).append(" in ").append(releaseYear).append("\n");
         for (Track track : tracks) {
             result.append("  ").append(track).append("\n");
         }
